@@ -43,25 +43,20 @@ void MainWindow::setUI()
 
     //listView
     QListView* listView = new QListView(leftWidget);
-    // 1. Запрещаем редактирование и настраиваем выбор
     listView->setEditTriggers(QAbstractItemView::NoEditTriggers);
     listView->setSelectionMode(QAbstractItemView::ExtendedSelection);
 
-    // 2. Возвращаем вертикальный режим (друг под другом)
     listView->setFlow(QListView::TopToBottom); 
     listView->setWrapping(false); 
 
-    // 3. Чтобы элементы занимали всю ширину и корректно пересчитывались
     listView->setResizeMode(QListView::Adjust);
 
-    // 4. Оптимизация (все элементы одной высоты)
     listView->setUniformItemSizes(true);
 
-    // 5. Исправленный StyleSheet
     listView->setStyleSheet(
         "QListView::item {"
-        "   height: 50px;"    /* Строгая высота */
-        "   padding: 5px;"    /* Внутренние отступы */
+        "   height: 50px;"    
+        "   padding: 5px;"    
         "}"
     );
 
