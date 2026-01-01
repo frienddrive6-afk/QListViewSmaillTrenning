@@ -1,0 +1,46 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "1. Configure",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "-S", ".",
+                "-B", "build",
+                "-DCMAKE_PREFIX_PATH=/home/nomantb/Qt/6.8.0/gcc_64",
+                "-GNinja",
+                "-DCMAKE_BUILD_TYPE=Debug",
+                "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON"
+            ],
+            "group": "build"
+        },
+        {
+            "label": "2. Build",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "--build", "build"
+            ],
+            "group": "build",
+            "problemMatcher": "$gcc",
+            "dependsOn": ["1. Configure"]
+        },
+        {
+            "label": "Build & Run",
+            "type": "shell",
+            "command": "\"${workspaceFolder}/build/QtTrening\"", 
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "always",
+                "focus": true,
+                "panel": "shared"
+            },
+            "problemMatcher": [],
+            "dependsOn": ["2. Build"]
+        }
+    ]
+}
